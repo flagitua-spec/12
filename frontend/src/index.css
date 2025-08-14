@@ -2,85 +2,549 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-        "Helvetica Neue", sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
+
+/* Continue from App.css */
+/* Gameplay Section */
+.gameplay-section {
+  padding: 100px 0;
+  background: var(--bg-secondary);
 }
 
-code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-        monospace;
+.gameplay-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
 }
 
-
-
-@layer base {
-  :root {
-        --background: 0 0% 100%;
-        --foreground: 0 0% 3.9%;
-        --card: 0 0% 100%;
-        --card-foreground: 0 0% 3.9%;
-        --popover: 0 0% 100%;
-        --popover-foreground: 0 0% 3.9%;
-        --primary: 0 0% 9%;
-        --primary-foreground: 0 0% 98%;
-        --secondary: 0 0% 96.1%;
-        --secondary-foreground: 0 0% 9%;
-        --muted: 0 0% 96.1%;
-        --muted-foreground: 0 0% 45.1%;
-        --accent: 0 0% 96.1%;
-        --accent-foreground: 0 0% 9%;
-        --destructive: 0 84.2% 60.2%;
-        --destructive-foreground: 0 0% 98%;
-        --border: 0 0% 89.8%;
-        --input: 0 0% 89.8%;
-        --ring: 0 0% 3.9%;
-        --chart-1: 12 76% 61%;
-        --chart-2: 173 58% 39%;
-        --chart-3: 197 37% 24%;
-        --chart-4: 43 74% 66%;
-        --chart-5: 27 87% 67%;
-        --radius: 0.5rem;
-    }
-  .dark {
-        --background: 0 0% 3.9%;
-        --foreground: 0 0% 98%;
-        --card: 0 0% 3.9%;
-        --card-foreground: 0 0% 98%;
-        --popover: 0 0% 3.9%;
-        --popover-foreground: 0 0% 98%;
-        --primary: 0 0% 98%;
-        --primary-foreground: 0 0% 9%;
-        --secondary: 0 0% 14.9%;
-        --secondary-foreground: 0 0% 98%;
-        --muted: 0 0% 14.9%;
-        --muted-foreground: 0 0% 63.9%;
-        --accent: 0 0% 14.9%;
-        --accent-foreground: 0 0% 98%;
-        --destructive: 0 62.8% 30.6%;
-        --destructive-foreground: 0 0% 98%;
-        --border: 0 0% 14.9%;
-        --input: 0 0% 14.9%;
-        --ring: 0 0% 83.1%;
-        --chart-1: 220 70% 50%;
-        --chart-2: 160 60% 45%;
-        --chart-3: 30 80% 55%;
-        --chart-4: 280 65% 60%;
-        --chart-5: 340 75% 55%;
-    }
+.decisions-panel, .psychology-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
+  border-radius: 12px;
+  padding: 30px;
 }
 
+.panel-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-accent);
+  margin-bottom: 24px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
 
+.decision-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-secondary);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
 
-@layer base {
-  * {
-    @apply border-border;
-    }
-  body {
-    @apply bg-background text-foreground;
-    }
+.decision-card:hover {
+  border-color: var(--border-glow);
+  transform: translateY(-2px);
+}
+
+.decision-card.selected {
+  border-color: var(--military-red);
+  background: linear-gradient(135deg, var(--bg-primary), var(--bg-card));
+}
+
+.decision-scenario h4 {
+  color: var(--text-primary);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.decision-scenario p {
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.decision-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.decision-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  background: var(--bg-secondary);
+  border-radius: 4px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.decision-option:hover {
+  background: var(--military-olive);
+}
+
+.option-icon {
+  font-size: 16px;
+}
+
+.decision-consequences {
+  margin-top: 16px;
+  padding: 16px;
+  background: var(--bg-secondary);
+  border-radius: 6px;
+  border-left: 4px solid var(--military-red);
+}
+
+.consequences-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: var(--text-accent);
+  margin-bottom: 12px;
+}
+
+.decision-consequences ul {
+  list-style: none;
+}
+
+.decision-consequences li {
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin-bottom: 4px;
+  padding-left: 16px;
+  position: relative;
+}
+
+.decision-consequences li::before {
+  content: "▶";
+  position: absolute;
+  left: 0;
+  color: var(--military-red);
+}
+
+/* Psychology Panel */
+.trait-meter {
+  margin-bottom: 20px;
+}
+
+.trait-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.trait-name {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.trait-value {
+  font-weight: 700;
+  color: var(--text-accent);
+}
+
+.trait-bar {
+  height: 8px;
+  background: var(--bg-primary);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.trait-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--military-olive), var(--text-accent));
+  transition: width 0.5s ease;
+  border-radius: 4px;
+}
+
+.profile-analysis {
+  margin-top: 24px;
+  padding: 16px;
+  background: var(--bg-primary);
+  border-radius: 6px;
+  border-left: 4px solid var(--military-olive);
+}
+
+.profile-analysis h4 {
+  color: var(--text-accent);
+  margin-bottom: 8px;
+}
+
+.profile-analysis p {
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* AI Scenarios Section */
+.ai-scenarios {
+  padding: 100px 0;
+  background: var(--bg-primary);
+}
+
+.scenarios-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.tactical-map {
+  position: relative;
+  aspect-ratio: 16/10;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid var(--border-primary);
+}
+
+.map-background {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.map-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, 
+    rgba(13, 27, 13, 0.7) 0%, 
+    transparent 50%, 
+    rgba(139, 0, 0, 0.3) 100%);
+}
+
+.map-markers {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.map-marker {
+  position: absolute;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.marker-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--military-red);
+  border: 2px solid var(--military-amber);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  position: relative;
+  z-index: 2;
+}
+
+.marker-pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--military-amber);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulse 2s infinite;
+  opacity: 0.6;
+}
+
+.map-marker.active .marker-icon {
+  transform: scale(1.2);
+  box-shadow: 0 0 20px var(--military-amber);
+}
+
+@keyframes pulse {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+  50% { transform: translate(-50%, -50%) scale(1.5); opacity: 0.3; }
+  100% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
+}
+
+.battle-animations {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.drone-path {
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  width: 80%;
+  height: 2px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.drone-path.active {
+  opacity: 1;
+}
+
+.drone-icon {
+  position: absolute;
+  font-size: 20px;
+  animation: drone-fly 3s linear;
+}
+
+@keyframes drone-fly {
+  0% { left: 0%; }
+  100% { left: 100%; }
+}
+
+.artillery-strike {
+  position: absolute;
+  top: 60%;
+  left: 70%;
+  width: 30px;
+  height: 30px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.artillery-strike.active {
+  opacity: 1;
+}
+
+.strike-effect {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, var(--military-orange), transparent);
+  border-radius: 50%;
+  animation: strike-flash 0.5s ease-out;
+}
+
+@keyframes strike-flash {
+  0% { transform: scale(0); opacity: 1; }
+  100% { transform: scale(3); opacity: 0; }
+}
+
+/* Scenario Details */
+.scenario-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.scenario-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.scenario-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.scenario-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-активна {
+  background: rgba(139, 0, 0, 0.2);
+  color: var(--military-red);
+  border: 1px solid var(--military-red);
+}
+
+.status-планування {
+  background: rgba(255, 191, 0, 0.2);
+  color: var(--military-amber);
+  border: 1px solid var(--military-amber);
+}
+
+.status-виконується {
+  background: rgba(85, 107, 47, 0.2);
+  color: var(--military-olive);
+  border: 1px solid var(--military-olive);
+}
+
+.scenario-description {
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.scenario-units h4 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-accent);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.units-list {
+  list-style: none;
+}
+
+.unit-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.unit-indicator {
+  width: 8px;
+  height: 8px;
+  background: var(--military-olive);
+  border-radius: 50%;
+}
+
+.scenario-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn-tactical, .btn-tactical-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-tactical {
+  background: var(--military-red);
+  color: white;
+  border: none;
+}
+
+.btn-tactical:hover {
+  background: var(--military-bright-red);
+  transform: translateY(-1px);
+}
+
+.btn-tactical-secondary {
+  background: transparent;
+  color: var(--text-accent);
+  border: 1px solid var(--border-glow);
+}
+
+.btn-tactical-secondary:hover {
+  background: var(--text-accent);
+  color: var(--bg-primary);
+}
+
+.scenarios-navigation {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.nav-dot {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  background: var(--bg-primary);
+  border: 2px solid var(--border-secondary);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-dot.active {
+  background: var(--military-red);
+  border-color: var(--military-red);
+}
+
+.dot-pulse {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--military-red);
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.nav-dot.active .dot-pulse {
+  animation: dot-pulse 1.5s infinite;
+}
+
+@keyframes dot-pulse {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+  
+  .hero-content {
+    padding: 20px;
+  }
+  
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .hero-actions .btn-primary,
+  .hero-actions .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .gameplay-content,
+  .scenarios-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .hero-stats {
+    justify-content: space-between;
+  }
+  
+  .section-title {
+    font-size: 2.5rem;
+  }
+  
+  .tactical-map {
+    aspect-ratio: 16/12;
+  }
 }
