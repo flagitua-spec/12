@@ -765,9 +765,374 @@
   animation: marker-move 1s ease-in-out;
 }
 
-@keyframes marker-move {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+/* Battle animations and scenario details continued */
+.battle-animations {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.drone-path {
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  width: 80%;
+  height: 3px;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  background: linear-gradient(90deg, transparent, var(--military-amber), transparent);
+  border-radius: 2px;
+}
+
+.drone-path.active {
+  opacity: 1;
+  animation: path-glow 3s ease-in-out;
+}
+
+@keyframes path-glow {
+  0%, 100% { box-shadow: none; }
+  50% { box-shadow: 0 0 15px var(--military-amber); }
+}
+
+.drone-icon {
+  position: absolute;
+  font-size: 24px;
+  animation: drone-flight 3s linear;
+  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
+}
+
+@keyframes drone-flight {
+  0% { left: 0%; transform: rotate(0deg); }
+  100% { left: 100%; transform: rotate(10deg); }
+}
+
+.artillery-strike {
+  position: absolute;
+  top: 60%;
+  left: 70%;
+  width: 40px;
+  height: 40px;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.artillery-strike.active {
+  opacity: 1;
+}
+
+.strike-effect {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, var(--military-orange), var(--military-red), transparent);
+  border-radius: 50%;
+  animation: artillery-blast 0.8s ease-out;
+}
+
+@keyframes artillery-blast {
+  0% { transform: scale(0); opacity: 1; }
+  50% { transform: scale(2); opacity: 0.8; }
+  100% { transform: scale(4); opacity: 0; }
+}
+
+/* Enhanced Scenario Details */
+.scenario-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 32px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-large);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.scenario-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--military-blue), var(--military-amber));
+  border-radius: 2px;
+}
+
+.scenario-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-large), 0 0 35px rgba(74, 144, 226, 0.2);
+}
+
+.scenario-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.scenario-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.scenario-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  backdrop-filter: blur(8px);
+  border: 1px solid;
+}
+
+.status-активна {
+  background: rgba(196, 30, 58, 0.15);
+  color: #ff6b6b;
+  border-color: rgba(196, 30, 58, 0.3);
+  box-shadow: 0 0 15px rgba(196, 30, 58, 0.2);
+}
+
+.status-планування {
+  background: rgba(255, 215, 0, 0.15);
+  color: var(--military-amber);
+  border-color: rgba(255, 215, 0, 0.3);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+}
+
+.status-виконується {
+  background: rgba(74, 144, 226, 0.15);
+  color: #60a5fa;
+  border-color: rgba(74, 144, 226, 0.3);
+  box-shadow: 0 0 15px rgba(74, 144, 226, 0.2);
+}
+
+.scenario-description {
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.scenario-units h4 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-accent);
+  font-weight: 700;
+  margin-bottom: 16px;
+  font-size: 16px;
+}
+
+.units-list {
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+.unit-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-secondary);
+  font-size: 14px;
+  padding: 8px 12px;
+  background: rgba(135, 169, 107, 0.1);
+  border-radius: 8px;
+  border-left: 3px solid var(--military-sage);
+  transition: all 0.3s ease;
+}
+
+.unit-item:hover {
+  background: rgba(135, 169, 107, 0.2);
+  transform: translateX(4px);
+}
+
+.unit-indicator {
+  width: 10px;
+  height: 10px;
+  background: var(--military-sage);
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 8px rgba(135, 169, 107, 0.5);
+}
+
+.scenario-actions {
+  margin-top: 28px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-tactical, .btn-tactical-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  border: none;
+}
+
+.btn-tactical {
+  background: linear-gradient(135deg, var(--military-red), var(--military-bright-red));
+  color: white;
+  box-shadow: 0 4px 15px rgba(196, 30, 58, 0.3);
+}
+
+.btn-tactical:hover {
+  background: linear-gradient(135deg, var(--military-bright-red), var(--military-red));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(196, 30, 58, 0.4);
+}
+
+.btn-tactical-secondary {
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  color: var(--text-accent);
+  border: 1px solid var(--border-glow);
+}
+
+.btn-tactical-secondary:hover {
+  background: var(--text-accent);
+  color: var(--military-dark-green);
+  transform: translateY(-2px);
+}
+
+.scenarios-navigation {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  align-items: center;
+}
+
+.nav-dot {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  background: rgba(135, 169, 107, 0.3);
+  border: 2px solid var(--border-secondary);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-dot:hover {
+  background: rgba(135, 169, 107, 0.5);
+  transform: scale(1.1);
+}
+
+.nav-dot.active {
+  background: var(--military-red);
+  border-color: var(--military-red);
+  transform: scale(1.2);
+  box-shadow: 0 0 15px rgba(196, 30, 58, 0.5);
+}
+
+.dot-pulse {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--military-red);
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.nav-dot.active .dot-pulse {
+  animation: nav-dot-pulse 2s infinite;
+}
+
+@keyframes nav-dot-pulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+/* Enhanced Responsive Design */
+@media (max-width: 1024px) {
+  .scenarios-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .gameplay-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .tactical-map {
+    aspect-ratio: 16/9;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+  
+  .hero-content {
+    padding: 32px 20px;
+  }
+  
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .hero-actions .btn-primary,
+  .hero-actions .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .hero-stats {
+    justify-content: space-between;
+    gap: 20px;
+  }
+  
+  .section-title {
+    font-size: 2.5rem;
+  }
+  
+  .tactical-map {
+    aspect-ratio: 4/3;
+  }
+  
+  .decisions-panel, .psychology-panel {
+    padding: 24px;
+  }
+  
+  .scenario-card {
+    padding: 24px;
+  }
+  
+  .donation-cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .donation-stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-content {
+    padding: 32px 24px;
+  }
 }
 
 .battle-animations {
