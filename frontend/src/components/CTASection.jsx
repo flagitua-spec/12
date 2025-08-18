@@ -60,7 +60,7 @@ const CTASection = ({ testimonials }) => {
         <div className="main-cta">
           <div className="cta-background">
             <img 
-              src="https://images.unsplash.com/photo-1652145595413-0a79398e5888?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Njl8MHwxfHNlYXJjaHwyfHxjb21tYW5kJTIwY2VudGVyfGVufDB8fHx8MTc1NTIwMjkyNnww&ixlib=rb-4.1.0&q=85"
+              src="https://i.ibb.co/vxMpcJfd/image.png"
               alt="Command center"
               className="cta-image"
             />
@@ -151,7 +151,7 @@ const CTASection = ({ testimonials }) => {
         <footer className="site-footer">
           <div className="footer-content">
             <div className="footer-brand">
-              <h3 className="brand-name">ВІДСІЧ</h3>
+              <h3 className="brand-name">ВЕРХОВНИЙ</h3>
               <p className="brand-tagline">Стратегічна гра майбутнього</p>
             </div>
             <div className="footer-links">
@@ -174,7 +174,7 @@ const CTASection = ({ testimonials }) => {
             </div>
           </div>
           <div className="footer-bottom">
-            <p>&copy; 2024 Відсіч. Всі права захищені.</p>
+            <p>&copy; 2024 Верховний. Всі права захищені.</p>
             <p className="footer-disclaimer">
               Гра призначена для освітніх та розважальних цілей. 
               Не містить пропаганди насильства.

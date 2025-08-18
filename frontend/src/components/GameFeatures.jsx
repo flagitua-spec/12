@@ -24,7 +24,7 @@ const GameFeatures = ({ features }) => {
         <div className="section-header">
           <h2 className="section-title">Особливості гри</h2>
           <p className="section-subtitle">
-            Унікальні можливості, що роблять "Відсіч" справжнім симулятором лідерства
+            Унікальні можливості, що роблять "Верховний" справжнім симулятором лідерства
           </p>
         </div>
 
@@ -111,7 +111,7 @@ const GameFeatures = ({ features }) => {
 
         <div className="features-summary">
           <div className="summary-card">
-            <h3>Чому "Відсіч" унікальна?</h3>
+            <h3>Чому "Верховний" унікальна?</h3>
             <div className="summary-points">
               <div className="summary-point">
                 <span className="point-number">1</span>

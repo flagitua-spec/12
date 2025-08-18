@@ -20,7 +20,7 @@ const HeroSection = () => {
     <section className="hero-section">
       <div className="hero-background">
         <img 
-          src="https://images.unsplash.com/photo-1731579884331-95c1da04e988?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2Mzl8MHwxfHNlYXJjaHwxfHxtaWxpdGFyeSUyMGRyb25lc3xlbnwwfHx8fDE3NTUyMDI5MDh8MA&ixlib=rb-4.1.0&q=85"
+          src="https://i.ibb.co/HLq0GBsx/UMD.png"
           alt="Military drones"
           className="hero-image"
         />
@@ -48,13 +48,16 @@ const HeroSection = () => {
         </div>
         
         <h1 className="hero-title">
-          ВІДСІЧ
+          ВЕРХОВНИЙ
           <span className="title-subtitle">Візьми на себе тягар лідерства</span>
         </h1>
         
         <p className="hero-description">
-          Кожне рішення — життя нації. Стань Президентом країни, що воює. 
+          Кожне рішення - це життя країни.
+          Стань Президентом країни, що воює. 
           AI генерує унікальні сценарії на основі твоїх рішень.
+          Отримай свій психологічний портрет.
+          Задонать на актуальні збори.
         </p>
         
         <div className="hero-actions">
@@ -69,7 +72,7 @@ const HeroSection = () => {
         
         <div className="hero-stats">
           <div className="stat-item">
-            <div className="stat-number">1000+</div>
+            <div className="stat-number">∞</div>
             <div className="stat-label">Унікальних сценаріїв</div>
           </div>
           <div className="stat-item">

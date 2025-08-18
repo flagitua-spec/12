@@ -4,6 +4,26 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
 
+/* Font loading optimization */
+@font-face {
+  font-family: 'Inter';
+  font-display: swap;
+}
+
+/* Critical CSS for initial render */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
 /* Continue from App.css */
 /* Gameplay Section */
 .gameplay-section {
@@ -1223,19 +1243,829 @@
   font-style: italic;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
+/* Enhanced Responsive Design - Mobile First Approach */
+
+/* Base styles for all devices */
+.container {
+  width: 100%;
+  padding-left: var(--spacing-md);
+  padding-right: var(--spacing-md);
+}
+
+/* Component responsive utilities */
+.responsive-grid {
+  display: grid;
+  gap: var(--spacing-md);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .responsive-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .responsive-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1440px) {
+  .responsive-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Extra Small Devices (Phones) */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 12px;
+  }
+  
+  .hero-section {
+    min-height: 90vh;
+  }
+  
+  .hero-content {
+    padding: 16px;
+    text-align: center;
+  }
+  
+  .hero-title {
+    font-size: 2.5rem;
+    line-height: 1.1;
+  }
+  
+  .title-subtitle {
+    font-size: 1rem;
+    margin-top: 8px;
+  }
+  
+  .hero-description {
+    font-size: 16px;
+    margin-bottom: 24px;
+  }
+  
+  .hero-badge {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+  
+  .hero-actions {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+  
+  .btn-primary, .btn-secondary {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 20px;
+    font-size: 14px;
+  }
+  
+  .hero-stats {
+    justify-content: space-around;
+    gap: 16px;
+  }
+  
+  .stat-number {
+    font-size: 20px;
+  }
+  
+  .stat-label {
+    font-size: 10px;
+  }
+  
+  /* Drone markers - hide on very small screens */
+  .drone-marker {
+    display: none;
+  }
+  
+  /* Sections */
+  .gameplay-section,
+  .ai-scenarios,
+  .game-features,
+  .cta-section {
+    padding: 40px 0;
+  }
+  
+  /* Improved mobile spacing */
+  .section-header {
+    margin-bottom: 30px;
+  }
+  
+  .section-title {
+    font-size: 1.8rem;
+    line-height: 1.2;
+  }
+  
+  .section-subtitle {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  .section-header {
+    margin-bottom: 40px;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .section-subtitle {
+    font-size: 16px;
+  }
+  
+  /* Gameplay Section */
+  .gameplay-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .decisions-panel,
+  .psychology-panel {
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+  
+  .panel-title {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+  
+  .decision-card {
+    padding: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .decision-scenario h4 {
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+  
+  .decision-scenario p {
+    font-size: 13px;
+    margin-bottom: 12px;
+  }
+  
+  .decision-options {
+    gap: 6px;
+  }
+  
+  .decision-option {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+  
+  .trait-meter {
+    margin-bottom: 16px;
+  }
+  
+  .trait-name,
+  .trait-value {
+    font-size: 13px;
+  }
+  
+  .profile-analysis {
+    padding: 12px;
+    margin-top: 16px;
+  }
+  
+  .profile-analysis h4 {
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+  
+  .profile-analysis p {
+    font-size: 12px;
+  }
+  
+  .decisions-panel,
+  .psychology-panel {
+    padding: 20px;
+  }
+  
+  .panel-title {
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+  
+  .decision-card {
+    padding: 16px;
+    margin-bottom: 12px;
+  }
+  
+  .decision-options {
+    gap: 6px;
+  }
+  
+  .decision-option {
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+  
+  /* AI Scenarios */
+  .scenarios-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .tactical-map {
+    aspect-ratio: 4/3;
+    margin-bottom: 16px;
+    border-radius: 8px;
+  }
+  
+  .map-marker {
+    transform: scale(0.8);
+  }
+  
+  .marker-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+  
+  .marker-pulse {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .scenario-card {
+    padding: 16px;
+    margin-bottom: 12px;
+  }
+  
+  .scenario-title {
+    font-size: 15px;
+    line-height: 1.3;
+  }
+  
+  .scenario-status {
+    padding: 3px 8px;
+    font-size: 10px;
+  }
+  
+  .scenario-description {
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+  
+  .scenario-units h4 {
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+  
+  .unit-item {
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+  
+  .scenario-actions {
+    margin-top: 16px;
+    gap: 8px;
+    flex-direction: column;
+  }
+  
+  .btn-tactical,
+  .btn-tactical-secondary {
+    width: 100%;
+    justify-content: center;
+    font-size: 11px;
+    padding: 8px 12px;
+  }
+  
+  .scenarios-navigation {
+    margin-top: 16px;
+    gap: 8px;
+  }
+  
+  .nav-dot {
+    width: 10px;
+    height: 10px;
+  }
+  
+  .tactical-map {
+    aspect-ratio: 16/10;
+    margin-bottom: 20px;
+  }
+  
+  .map-marker {
+    transform: scale(0.8);
+  }
+  
+  .scenario-card {
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+  
+  .scenario-title {
+    font-size: 16px;
+  }
+  
+  .scenario-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .btn-tactical,
+  .btn-tactical-secondary {
+    width: 100%;
+    justify-content: center;
+    font-size: 12px;
+    padding: 8px 14px;
+  }
+  
+  /* Features */
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  
+  .feature-card {
+    padding: 16px;
+    border-radius: 8px;
+  }
+  
+  .feature-header {
+    margin-bottom: 12px;
+  }
+  
+  .feature-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+  }
+  
+  .feature-title-section {
+    margin-left: 12px;
+  }
+  
+  .feature-title {
+    font-size: 16px;
+    line-height: 1.3;
+  }
+  
+  .feature-description {
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+  
+  .feature-benefits {
+    margin-top: 12px;
+  }
+  
+  .feature-benefits.show {
+    max-height: 150px;
+  }
+  
+  .feature-benefits h4 {
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+  
+  .benefit-item {
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+  
+  .feature-demo {
+    height: 50px;
+    margin-top: 16px;
+  }
+  
+  .neural-network,
+  .story-branches,
+  .mind-graph,
+  .military-grid {
+    transform: scale(0.8);
+  }
+  
+  .feature-card {
+    padding: 20px;
+  }
+  
+  .feature-title {
+    font-size: 16px;
+  }
+  
+  .feature-description {
+    font-size: 14px;
+  }
+  
+  .summary-card {
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .summary-card h3 {
+    font-size: 18px;
+    margin-bottom: 16px;
+    line-height: 1.3;
+  }
+  
+  .summary-points {
+    gap: 12px;
+  }
+  
+  .summary-point {
+    gap: 12px;
+  }
+  
+  .point-number {
+    width: 26px;
+    height: 26px;
+    font-size: 13px;
+  }
+  
+  .point-text {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+  
+  .summary-card h3 {
+    font-size: 20px;
+  }
+  
+  .summary-points {
+    gap: 12px;
+  }
+  
+  .point-text {
+    font-size: 13px;
+  }
+  
+  /* CTA Section */
+  .testimonials {
+    margin-bottom: 60px;
+  }
+  
+  .testimonials-title {
+    font-size: 22px;
+    margin-bottom: 30px;
+    line-height: 1.3;
+  }
+  
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-bottom: 30px;
+  }
+  
+  .testimonial-card {
+    padding: 16px;
+    border-radius: 8px;
+  }
+  
+  .testimonial-header {
+    margin-bottom: 12px;
+  }
+  
+  .testimonial-rating {
+    gap: 1px;
+  }
+  
+  .star-filled {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .testimonial-text {
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+  
+  .author-name {
+    font-size: 13px;
+  }
+  
+  .author-role {
+    font-size: 11px;
+  }
+  
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .testimonial-card {
+    padding: 20px;
+  }
+  
+  .main-cta {
+    border-radius: 12px;
+    margin-bottom: 40px;
+  }
+  
+  .cta-content {
+    padding: 30px 16px;
+  }
+  
+  .cta-badge {
+    font-size: 11px;
+    padding: 6px 12px;
+    margin-bottom: 16px;
+  }
+  
+  .cta-title {
+    font-size: 1.8rem;
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  
+  .title-highlight {
+    font-size: 0.75em;
+    margin-top: 6px;
+  }
+  
+  .cta-description {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  
+  .cta-actions {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+    margin-bottom: 30px;
+  }
+  
+  .btn-primary-large,
+  .btn-secondary-large {
+    width: 100%;
+    padding: 14px 20px;
+    font-size: 14px;
+    min-width: auto;
+  }
+  
+  .cta-stats {
+    flex-direction: column;
+    gap: 14px;
+    align-items: center;
+  }
+  
+  .stat-item {
+    text-align: center;
+    gap: 8px;
+  }
+  
+  .stat-icon {
+    font-size: 20px;
+  }
+  
+  .stat-number {
+    font-size: 18px;
+  }
+  
+  .stat-label {
+    font-size: 10px;
+  }
+  
+  .cta-title {
+    font-size: 2rem;
+    margin-bottom: 12px;
+  }
+  
+  .title-highlight {
+    font-size: 0.8em;
+  }
+  
+  .cta-description {
+    font-size: 16px;
+    margin-bottom: 24px;
+  }
+  
+  .cta-actions {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+  
+  .btn-primary-large,
+  .btn-secondary-large {
+    width: 100%;
+    padding: 16px 24px;
+    font-size: 16px;
+    min-width: auto;
+  }
+  
+  .cta-stats {
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+  }
+  
+  .stat-item {
+    text-align: center;
+  }
+  
+  /* Newsletter */
+  .newsletter {
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 40px;
+  }
+  
+  .newsletter-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+  
+  .newsletter-description {
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  
+  .newsletter-form {
+    max-width: 100%;
+  }
+  
+  .form-group {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .email-input {
+    padding: 10px 14px;
+    font-size: 16px; /* Prevents zoom on iOS */
+    border-radius: 4px;
+  }
+  
+  .submit-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 10px 16px;
+    font-size: 14px;
+    border-radius: 4px;
+  }
+  
+  .newsletter-title {
+    font-size: 20px;
+  }
+  
+  .newsletter-description {
+    font-size: 14px;
+  }
+  
+  .form-group {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .email-input {
+    padding: 10px 14px;
+    font-size: 14px;
+  }
+  
+  .submit-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 10px 16px;
+  }
+  
+  /* Footer */
+  .site-footer {
+    padding-top: 30px;
+  }
+  
+  .footer-content {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .footer-brand {
+    max-width: 100%;
+  }
+  
+  .brand-name {
+    font-size: 18px;
+    margin-bottom: 6px;
+  }
+  
+  .brand-tagline {
+    font-size: 12px;
+  }
+  
+  .footer-links {
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .link-group {
+    text-align: center;
+    min-width: 120px;
+  }
+  
+  .link-group h4 {
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+  
+  .link-group li {
+    margin-bottom: 6px;
+  }
+  
+  .link-group a {
+    font-size: 12px;
+  }
+  
+  .footer-bottom {
+    padding-top: 16px;
+  }
+  
+  .footer-bottom p {
+    font-size: 11px;
+    margin-bottom: 6px;
+    line-height: 1.4;
+  }
+  
+  .footer-links {
+    justify-content: center;
+    gap: 24px;
+  }
+  
+  .link-group {
+    text-align: center;
+  }
+  
+  .brand-name {
+    font-size: 20px;
+  }
+  
+  /* Mobile-specific optimizations */
+  .hero-image,
+  .cta-image {
+    object-position: center center;
+  }
+  
+  .loading-radar {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .radar-sweep {
+    height: 35px;
+  }
+  
+  .loading-text {
+    font-size: 16px;
+  }
+  
+  /* Animation performance optimization for mobile */
+  .drone-marker,
+  .explosion,
+  .neural-node,
+  .drone-icon {
+    will-change: transform;
+  }
+  
+  /* Better mobile touch interactions */
+  .decision-card:active,
+  .feature-card:active,
+  .testimonial-card:active {
+    transform: scale(0.98);
+  }
+  
+  .btn-primary:active,
+  .btn-secondary:active {
+    transform: scale(0.95);
+  }
+}
+
+/* Small Devices (Phones in landscape, small tablets) */
+@media (min-width: 481px) and (max-width: 768px) {
   .container {
     padding: 0 16px;
   }
   
   .hero-content {
-    padding: 20px;
+    padding: 24px;
+  }
+  
+  .hero-title {
+    font-size: 3.5rem;
+  }
+  
+  .title-subtitle {
+    font-size: 1.2rem;
   }
   
   .hero-actions {
     flex-direction: column;
     width: 100%;
+    gap: 14px;
   }
   
   .hero-actions .btn-primary,
@@ -1244,31 +2074,45 @@
     justify-content: center;
   }
   
+  .hero-stats {
+    justify-content: space-between;
+    gap: 20px;
+  }
+  
   .gameplay-content,
   .scenarios-content {
     grid-template-columns: 1fr;
     gap: 30px;
   }
   
-  .hero-stats {
-    justify-content: space-between;
-  }
-  
   .section-title {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
   }
   
   .tactical-map {
-    aspect-ratio: 16/12;
+    aspect-ratio: 16/11;
   }
   
   .features-grid {
     grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
   
   .cta-actions {
     flex-direction: column;
     align-items: center;
+    gap: 14px;
+  }
+  
+  .btn-primary-large,
+  .btn-secondary-large {
+    width: 100%;
+    max-width: 300px;
   }
   
   .cta-stats {
@@ -1278,14 +2122,932 @@
   
   .form-group {
     flex-direction: column;
+    gap: 10px;
   }
   
   .footer-content {
     flex-direction: column;
     gap: 30px;
+    align-items: center;
+    text-align: center;
   }
   
   .footer-links {
     gap: 30px;
+  }
+}
+
+/* Medium Devices (Tablets) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container {
+    padding: 0 24px;
+    max-width: 100%;
+  }
+  
+  /* Enhanced tablet experience */
+  .gameplay-section,
+  .ai-scenarios,
+  .game-features,
+  .cta-section {
+    padding: 80px 0;
+  }
+  
+  .section-header {
+    margin-bottom: 50px;
+  }
+  
+  .section-title {
+    font-size: 3rem;
+  }
+  
+  .section-subtitle {
+    font-size: 17px;
+  }
+  
+  .hero-content {
+    padding: 32px;
+  }
+  
+  .hero-title {
+    font-size: 4rem;
+  }
+  
+  .title-subtitle {
+    font-size: 1.4rem;
+  }
+  
+  .hero-actions {
+    gap: 16px;
+  }
+  
+  .hero-stats {
+    gap: 24px;
+  }
+  
+  /* Optimized layouts for tablets */
+  .gameplay-content {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+  
+  .decisions-panel,
+  .psychology-panel {
+    padding: 24px;
+    min-height: 400px;
+  }
+  
+  .panel-title {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  .decision-card {
+    padding: 18px;
+    margin-bottom: 14px;
+  }
+  
+  .decision-scenario h4 {
+    font-size: 16px;
+  }
+  
+  .decision-scenario p {
+    font-size: 14px;
+  }
+  
+  .decision-option {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+  
+  .trait-meter {
+    margin-bottom: 18px;
+  }
+  
+  .trait-name,
+  .trait-value {
+    font-size: 14px;
+  }
+  
+  .profile-analysis {
+    padding: 16px;
+  }
+  
+  .profile-analysis h4 {
+    font-size: 15px;
+  }
+  
+  .profile-analysis p {
+    font-size: 13px;
+  }
+  
+  .scenarios-content {
+    grid-template-columns: 1.5fr 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+  
+  .tactical-map {
+    aspect-ratio: 16/10;
+    margin-bottom: 24px;
+  }
+  
+  .map-marker {
+    transform: scale(1);
+  }
+  
+  .marker-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+  
+  .marker-pulse {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .scenario-card {
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+  
+  .scenario-title {
+    font-size: 17px;
+  }
+  
+  .scenario-status {
+    padding: 4px 10px;
+    font-size: 11px;
+  }
+  
+  .scenario-description {
+    font-size: 14px;
+    margin-bottom: 18px;
+  }
+  
+  .scenario-units h4 {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .unit-item {
+    font-size: 13px;
+  }
+  
+  .scenario-actions {
+    flex-direction: row;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .btn-tactical,
+  .btn-tactical-secondary {
+    flex: 1;
+    min-width: 120px;
+    font-size: 12px;
+    padding: 9px 14px;
+  }
+  
+  .nav-dot {
+    width: 12px;
+    height: 12px;
+  }
+  
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    margin-bottom: 50px;
+  }
+  
+  .feature-card {
+    padding: 22px;
+  }
+  
+  .feature-icon {
+    width: 46px;
+    height: 46px;
+  }
+  
+  .feature-title {
+    font-size: 17px;
+  }
+  
+  .feature-description {
+    font-size: 14px;
+  }
+  
+  .feature-benefits.show {
+    max-height: 180px;
+  }
+  
+  .benefit-item {
+    font-size: 13px;
+  }
+  
+  .feature-demo {
+    height: 55px;
+  }
+  
+  .summary-card {
+    padding: 32px;
+  }
+  
+  .summary-card h3 {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+  
+  .point-number {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+  }
+  
+  .point-text {
+    font-size: 13px;
+  }
+  
+  .testimonials {
+    margin-bottom: 70px;
+  }
+  
+  .testimonials-title {
+    font-size: 28px;
+    margin-bottom: 35px;
+  }
+  
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-bottom: 35px;
+  }
+  
+  .testimonial-card {
+    padding: 20px;
+  }
+  
+  .testimonial-text {
+    font-size: 14px;
+  }
+  
+  .author-name {
+    font-size: 14px;
+  }
+  
+  .author-role {
+    font-size: 12px;
+  }
+  
+  /* CTA optimizations for tablets */
+  .main-cta {
+    margin-bottom: 50px;
+  }
+  
+  .cta-content {
+    padding: 50px 32px;
+  }
+  
+  .cta-badge {
+    font-size: 13px;
+    padding: 8px 14px;
+  }
+  
+  .cta-title {
+    font-size: 2.8rem;
+  }
+  
+  .title-highlight {
+    font-size: 0.7em;
+  }
+  
+  .cta-description {
+    font-size: 16px;
+    margin-bottom: 25px;
+  }
+  
+  .cta-actions {
+    flex-direction: row;
+    justify-content: center;
+    gap: 16px;
+  }
+  
+  .btn-primary-large,
+  .btn-secondary-large {
+    min-width: 180px;
+    padding: 18px 28px;
+    font-size: 16px;
+  }
+  
+  .cta-stats {
+    flex-direction: row;
+    justify-content: center;
+    gap: 32px;
+  }
+  
+  .stat-icon {
+    font-size: 22px;
+  }
+  
+  .stat-number {
+    font-size: 19px;
+  }
+  
+  .stat-label {
+    font-size: 11px;
+  }
+  
+  /* Newsletter */
+  .newsletter {
+    padding: 32px;
+    margin-bottom: 50px;
+  }
+  
+  .newsletter-title {
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+  
+  .newsletter-description {
+    font-size: 15px;
+    margin-bottom: 24px;
+  }
+  
+  .form-group {
+    flex-direction: row;
+    gap: 12px;
+    max-width: 450px;
+  }
+  
+  .email-input {
+    padding: 12px 16px;
+    font-size: 15px;
+  }
+  
+  .submit-btn {
+    padding: 12px 18px;
+    font-size: 15px;
+    white-space: nowrap;
+  }
+  
+  /* Footer */
+  .site-footer {
+    padding-top: 35px;
+  }
+  
+  .footer-content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 25px;
+  }
+  
+  .footer-brand {
+    max-width: 250px;
+  }
+  
+  .brand-name {
+    font-size: 22px;
+  }
+  
+  .brand-tagline {
+    font-size: 13px;
+  }
+  
+  .footer-links {
+    gap: 32px;
+  }
+  
+  .link-group h4 {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .link-group a {
+    font-size: 13px;
+  }
+  
+  .footer-bottom {
+    padding-top: 18px;
+  }
+  
+  .footer-bottom p {
+    font-size: 12px;
+  }
+}
+
+/* Large Devices (Desktops) */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .container {
+    max-width: 1200px;
+    padding: 0 32px;
+  }
+  
+  .hero-content {
+    padding: 40px;
+    max-width: 650px;
+  }
+  
+  .hero-title {
+    font-size: 5rem;
+  }
+  
+  .title-subtitle {
+    font-size: 1.6rem;
+  }
+  
+  .hero-description {
+    font-size: 19px;
+  }
+  
+  .hero-actions {
+    gap: 18px;
+  }
+  
+  .hero-stats {
+    gap: 35px;
+  }
+  
+  /* Grid optimizations */
+  .gameplay-content {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  
+  .scenarios-content {
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+  }
+  
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+  
+  .testimonials-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  
+  /* Enhanced sections */
+  .section-header {
+    margin-bottom: 70px;
+  }
+  
+  .section-title {
+    font-size: 3.5rem;
+  }
+  
+  .section-subtitle {
+    font-size: 19px;
+  }
+  
+  /* CTA enhancements */
+  .cta-content {
+    padding: 70px 50px;
+  }
+  
+  .cta-title {
+    font-size: 3.5rem;
+  }
+  
+  .cta-description {
+    font-size: 19px;
+    max-width: 650px;
+  }
+  
+  .cta-stats {
+    gap: 50px;
+  }
+}
+
+/* Extra Large Devices (Large Desktops) */
+@media (min-width: 1441px) {
+  .container {
+    max-width: 1400px;
+    padding: 0 40px;
+  }
+  
+  .hero-content {
+    padding: 50px;
+    max-width: 700px;
+  }
+  
+  .hero-title {
+    font-size: 6rem;
+  }
+  
+  .title-subtitle {
+    font-size: 2rem;
+  }
+  
+  .hero-description {
+    font-size: 20px;
+    margin-bottom: 35px;
+  }
+  
+  .hero-actions {
+    gap: 20px;
+  }
+  
+  .hero-stats {
+    gap: 40px;
+  }
+  
+  .stat-number {
+    font-size: 28px;
+  }
+  
+  .stat-label {
+    font-size: 13px;
+  }
+  
+  /* Enhanced grids for large screens */
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+  
+  .testimonials-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  
+  /* Larger sections */
+  .gameplay-section,
+  .ai-scenarios,
+  .game-features,
+  .cta-section {
+    padding: 120px 0;
+  }
+  
+  .section-header {
+    margin-bottom: 80px;
+  }
+  
+  .section-title {
+    font-size: 4rem;
+  }
+  
+  .section-subtitle {
+    font-size: 20px;
+    max-width: 700px;
+  }
+  
+  /* Enhanced CTA */
+  .cta-content {
+    padding: 80px 60px;
+  }
+  
+  .cta-title {
+    font-size: 4rem;
+  }
+  
+  .cta-description {
+    font-size: 20px;
+    max-width: 700px;
+    margin-bottom: 35px;
+  }
+  
+  .btn-primary-large,
+  .btn-secondary-large {
+    padding: 22px 36px;
+    font-size: 19px;
+    min-width: 220px;
+  }
+  
+  .cta-stats {
+    gap: 60px;
+  }
+  
+  .stat-icon {
+    font-size: 28px;
+  }
+  
+  .stat-number {
+    font-size: 22px;
+  }
+  
+  .stat-label {
+    font-size: 13px;
+  }
+}
+
+/* Ultra Wide Screens */
+@media (min-width: 1920px) {
+  .container {
+    max-width: 1600px;
+  }
+  
+  .hero-content {
+    max-width: 800px;
+  }
+  
+  /* Enhanced grid layouts for ultra-wide screens */
+  .features-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 36px;
+  }
+  
+  .testimonials-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+  }
+  
+  .scenarios-content {
+    grid-template-columns: 2.5fr 1fr;
+    gap: 48px;
+  }
+  
+  /* Enhanced sections for ultra-wide */
+  .gameplay-section,
+  .ai-scenarios,
+  .game-features,
+  .cta-section {
+    padding: 140px 0;
+  }
+  
+  .section-header {
+    margin-bottom: 90px;
+  }
+  
+  .section-title {
+    font-size: 4.5rem;
+  }
+  
+  .section-subtitle {
+    font-size: 21px;
+    max-width: 800px;
+  }
+  
+  /* Enhanced CTA for ultra-wide */
+  .cta-content {
+    padding: 90px 70px;
+  }
+  
+  .cta-title {
+    font-size: 4.5rem;
+  }
+  
+  .cta-description {
+    font-size: 21px;
+    max-width: 800px;
+  }
+  
+  .btn-primary-large,
+  .btn-secondary-large {
+    padding: 24px 40px;
+    font-size: 20px;
+    min-width: 240px;
+  }
+  
+  .cta-stats {
+    gap: 70px;
+  }
+}
+
+/* Enhanced Accessibility and mobile navigation improvements */
+@media (max-width: 768px) {
+  /* Enhanced focus styles for keyboard navigation */
+  .btn-primary:focus,
+  .btn-secondary:focus,
+  .btn-tactical:focus,
+  .btn-tactical-secondary:focus,
+  .email-input:focus,
+  .submit-btn:focus {
+    outline: 3px solid var(--military-amber);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 1px var(--military-amber);
+  }
+  
+  /* Better spacing for touch interactions */
+  .decision-option,
+  .map-marker,
+  .nav-dot {
+    margin: 10px 0;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Improved readability with better contrast */
+  .hero-description,
+  .cta-description,
+  .newsletter-description,
+  .testimonial-text,
+  .scenario-description {
+    line-height: 1.7;
+    color: var(--text-primary);
+  }
+  
+  /* Mobile-specific hover states */
+  .feature-card:active,
+  .testimonial-card:active,
+  .scenario-card:active {
+    transform: scale(0.98);
+    border-color: var(--border-glow);
+    transition: transform 0.1s ease;
+  }
+  
+  /* Optimize images for mobile */
+  .hero-image,
+  .cta-image {
+    object-position: center center;
+  }
+  
+  /* Mobile-friendly forms */
+  .email-input {
+    font-size: 16px; /* Prevents zoom on iOS */
+    -webkit-appearance: none;
+    border-radius: 4px;
+  }
+  
+  /* Better mobile typography */
+  .panel-title,
+  .testimonials-title,
+  .newsletter-title {
+    line-height: 1.3;
+  }
+  
+  /* Enhanced mobile interactions */
+  .btn-primary:active,
+  .btn-secondary:active {
+    transform: scale(0.95);
+  }
+  
+  /* Better mobile menu spacing */
+  .footer-links {
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  
+  .link-group {
+    min-width: 100px;
+  }
+}
+
+/* Landscape orientation optimizations */
+@media (max-width: 896px) and (orientation: landscape) {
+  .hero-section {
+    min-height: 100vh;
+  }
+  
+  .hero-content {
+    padding: 20px;
+  }
+  
+  .hero-title {
+    font-size: 2.8rem;
+  }
+  
+  .title-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .hero-stats {
+    gap: 20px;
+  }
+  
+  .gameplay-section,
+  .ai-scenarios,
+  .game-features,
+  .cta-section {
+    padding: 50px 0;
+  }
+}
+
+/* Foldable and very small devices */
+@media (max-width: 280px) {
+  .container {
+    padding: 0 6px;
+  }
+  
+  .hero-title {
+    font-size: 1.6rem;
+  }
+  
+  .title-subtitle {
+    font-size: 0.8rem;
+  }
+  
+  .hero-content {
+    padding: 8px;
+  }
+  
+  .hero-description {
+    font-size: 14px;
+  }
+  
+  .hero-badge {
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+  
+  .btn-primary,
+  .btn-secondary {
+    font-size: 11px;
+    padding: 8px 12px;
+  }
+  
+  .section-title {
+    font-size: 1.4rem;
+  }
+  
+  .section-subtitle {
+    font-size: 12px;
+  }
+  
+  .hero-stats {
+    gap: 8px;
+  }
+  
+  .stat-number {
+    font-size: 16px;
+  }
+  
+  .stat-label {
+    font-size: 8px;
+  }
+  
+  /* Minimal spacing for very small screens */
+  .gameplay-section,
+  .ai-scenarios,
+  .game-features,
+  .cta-section {
+    padding: 30px 0;
+  }
+  
+  .section-header {
+    margin-bottom: 20px;
+  }
+  
+  .feature-card,
+  .testimonial-card,
+  .scenario-card {
+    padding: 12px;
+  }
+  
+  .cta-content {
+    padding: 20px 12px;
+  }
+  
+  .newsletter {
+    padding: 16px;
+  }
+}
+
+/* Additional responsive utilities */
+.responsive-text {
+  font-size: clamp(14px, 2.5vw, 18px);
+  line-height: 1.6;
+}
+
+.responsive-heading {
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  line-height: 1.2;
+}
+
+/* Container queries support (for modern browsers) */
+@supports (container-type: inline-size) {
+  .feature-card {
+    container-type: inline-size;
+  }
+  
+  @container (max-width: 300px) {
+    .feature-title {
+      font-size: 14px;
+    }
+    
+    .feature-description {
+      font-size: 12px;
+    }
+  }
+}
+
+/* Performance optimizations for mobile */
+@media (max-width: 768px) {
+  /* Reduce animations on mobile for better performance */
+  .drone-marker,
+  .explosion,
+  .neural-node {
+    animation-duration: 0.5s;
+  }
+  
+  /* Optimize images for mobile bandwidth */
+  .hero-image,
+  .cta-image,
+  .map-background {
+    image-rendering: optimizeSpeed;
+  }
+  
+  /* Better scroll performance */
+  .container {
+    overflow-x: hidden;
+  }
+  
+  /* Optimize touch scrolling */
+  body {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
   }
 }
