@@ -28,107 +28,529 @@ body {
 /* Gameplay Section */
 .gameplay-section {
   padding: 100px 0;
+}
+
+/* Donation Section Styles */
+.donation-section {
+  padding: 120px 0;
   background: var(--bg-secondary);
+  position: relative;
+  overflow: hidden;
+}
+
+.donation-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(135, 169, 107, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.donation-header {
+  text-align: center;
+  margin-bottom: 80px;
+  position: relative;
+}
+
+.header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 20, 147, 0.3);
+  padding: 12px 24px;
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #ff69b4;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  box-shadow: 0 8px 32px rgba(255, 20, 147, 0.2);
+}
+
+.heart-pulse {
+  animation: heart-beat 1.5s ease-in-out infinite;
+}
+
+@keyframes heart-beat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+.donation-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, var(--text-primary), #ff69b4, var(--text-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 20px;
+  line-height: 1.1;
+}
+
+.donation-title .title-highlight {
+  display: block;
+  background: linear-gradient(135deg, #4169e1, #00bfff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 0.8em;
+  margin-top: 8px;
+}
+
+.donation-subtitle {
+  font-size: 18px;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto 60px;
+  line-height: 1.7;
+}
+
+.donation-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+  margin-bottom: 80px;
+}
+
+.stat-card {
+  padding: 32px 24px;
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stat-card:hover {
+  transform: translateY(-8px) scale(1.02);
+}
+
+.stat-icon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--military-blue), #00bfff);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin: 0 auto 16px;
+  box-shadow: 0 8px 25px rgba(74, 144, 226, 0.3);
+}
+
+.stat-content {
+  color: var(--text-primary);
+}
+
+.stat-number {
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--text-accent);
+  display: block;
+  margin-bottom: 8px;
+  text-shadow: 0 0 15px var(--text-glow);
+}
+
+.stat-label {
+  font-size: 14px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.donation-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+  margin-bottom: 80px;
+}
+
+.donation-card {
+  padding: 32px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.donation-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #4169e1, #00bfff, #ffd700);
+  transition: all 0.3s ease;
+}
+
+.donation-card:hover::before {
+  height: 100%;
+  opacity: 0.05;
+}
+
+.card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.org-logo {
+  font-size: 32px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--glass-bg);
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--glass-border);
+}
+
+.org-info {
+  flex: 1;
+}
+
+.org-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.org-description {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.org-focus {
+  background: rgba(135, 169, 107, 0.1);
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  border-left: 4px solid var(--military-sage);
+}
+
+.focus-label {
+  font-size: 12px;
+  color: var(--text-accent);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.focus-text {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.donation-actions {
+  margin-bottom: 20px;
+}
+
+.donate-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  justify-content: center;
+  padding: 16px 24px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.primary-donate {
+  background: linear-gradient(135deg, #ff69b4, #ff1493);
+  color: white;
+  box-shadow: 0 8px 25px rgba(255, 20, 147, 0.4);
+}
+
+.primary-donate::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.primary-donate:hover::before {
+  left: 100%;
+}
+
+.primary-donate:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(255, 20, 147, 0.6);
+  background: linear-gradient(135deg, #ff1493, #ff69b4);
+}
+
+.security-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text-muted);
+  padding: 8px 12px;
+  background: rgba(135, 169, 107, 0.1);
+  border-radius: 8px;
+  border: 1px solid rgba(135, 169, 107, 0.2);
+}
+
+.security-icon {
+  color: #4ade80;
+}
+
+.donation-footer {
+  text-align: center;
+}
+
+.footer-content {
+  padding: 48px;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #4169e1, #00bfff);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin: 0 auto 24px;
+  box-shadow: 0 12px 35px rgba(74, 144, 226, 0.4);
+}
+
+.footer-text h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.footer-text p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.support-message {
+  font-size: 18px;
+  color: var(--text-accent);
+  font-weight: 600;
+  text-shadow: 0 0 15px var(--text-glow);
+}
+
+/* Enhanced Gameplay Section */
+.gameplay-section {
+  padding: 120px 0;
+  background: var(--bg-primary);
+  position: relative;
+}
+
+.gameplay-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 70% 30%, rgba(196, 30, 58, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 30% 70%, rgba(85, 107, 47, 0.1) 0%, transparent 50%);
+  pointer-events: none;
 }
 
 .gameplay-content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 48px;
   align-items: start;
 }
 
 .decisions-panel, .psychology-panel {
-  background: var(--bg-card);
-  border: 1px solid var(--border-primary);
-  border-radius: 12px;
-  padding: 30px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: var(--shadow-large);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.decisions-panel:hover, .psychology-panel:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-large), 0 0 40px rgba(255, 215, 0, 0.1);
 }
 
 .panel-title {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: 20px;
-  font-weight: 700;
+  gap: 16px;
+  font-size: 22px;
+  font-weight: 800;
   color: var(--text-accent);
-  margin-bottom: 24px;
+  margin-bottom: 32px;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.2px;
+  position: relative;
+}
+
+.panel-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--text-accent), transparent);
+  border-radius: 2px;
 }
 
 .decision-card {
-  background: var(--bg-primary);
-  border: 1px solid var(--border-secondary);
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 16px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 28px;
+  margin-bottom: 20px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.decision-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--military-red), var(--military-orange));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.decision-card:hover::before {
+  transform: scaleX(1);
 }
 
 .decision-card:hover {
+  transform: translateY(-4px);
   border-color: var(--border-glow);
-  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium), 0 0 25px rgba(255, 215, 0, 0.15);
 }
 
 .decision-card.selected {
   border-color: var(--military-red);
-  background: linear-gradient(135deg, var(--bg-primary), var(--bg-card));
+  background: linear-gradient(135deg, var(--glass-bg), rgba(196, 30, 58, 0.1));
+  box-shadow: 0 0 30px rgba(196, 30, 58, 0.3);
+}
+
+.decision-card.selected::before {
+  transform: scaleX(1);
+  background: linear-gradient(90deg, var(--military-red), var(--military-bright-red));
 }
 
 .decision-scenario h4 {
   color: var(--text-primary);
-  font-weight: 600;
-  margin-bottom: 8px;
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 12px;
 }
 
 .decision-scenario p {
   color: var(--text-secondary);
-  font-size: 14px;
-  margin-bottom: 16px;
+  font-size: 15px;
+  margin-bottom: 20px;
+  line-height: 1.6;
 }
 
 .decision-options {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
 }
 
 .decision-option {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 8px 12px;
-  background: var(--bg-secondary);
-  border-radius: 4px;
+  gap: 16px;
+  padding: 12px 16px;
+  background: rgba(135, 169, 107, 0.1);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(135, 169, 107, 0.2);
+  border-radius: 10px;
   font-size: 14px;
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
 }
 
 .decision-option:hover {
-  background: var(--military-olive);
+  background: rgba(135, 169, 107, 0.2);
+  border-color: var(--military-sage);
+  transform: translateX(4px);
 }
 
 .option-icon {
-  font-size: 16px;
+  font-size: 18px;
+  width: 24px;
+  text-align: center;
+}
+
+.option-text {
+  flex: 1;
+  color: var(--text-secondary);
+  font-weight: 500;
 }
 
 .decision-consequences {
-  margin-top: 16px;
-  padding: 16px;
-  background: var(--bg-secondary);
-  border-radius: 6px;
+  margin-top: 20px;
+  padding: 20px;
+  background: rgba(196, 30, 58, 0.1);
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
   border-left: 4px solid var(--military-red);
+  animation: consequences-appear 0.3s ease-out;
+}
+
+@keyframes consequences-appear {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 .consequences-title {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-weight: 600;
+  gap: 12px;
+  font-weight: 700;
   color: var(--text-accent);
-  margin-bottom: 12px;
+  margin-bottom: 16px;
+  font-size: 16px;
 }
 
 .decision-consequences ul {
@@ -138,9 +560,10 @@ body {
 .decision-consequences li {
   color: var(--text-secondary);
   font-size: 14px;
-  margin-bottom: 4px;
-  padding-left: 16px;
+  margin-bottom: 8px;
+  padding-left: 20px;
   position: relative;
+  line-height: 1.5;
 }
 
 .decision-consequences li::before {
@@ -148,88 +571,142 @@ body {
   position: absolute;
   left: 0;
   color: var(--military-red);
+  font-size: 12px;
 }
 
-/* Psychology Panel */
+/* Enhanced Psychology Panel */
 .trait-meter {
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+  padding: 16px;
+  background: rgba(135, 169, 107, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(135, 169, 107, 0.1);
 }
 
 .trait-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 .trait-name {
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text-primary);
+  font-size: 15px;
 }
 
 .trait-value {
-  font-weight: 700;
+  font-weight: 800;
   color: var(--text-accent);
+  font-size: 16px;
+  text-shadow: 0 0 10px var(--text-glow);
 }
 
 .trait-bar {
-  height: 8px;
-  background: var(--bg-primary);
-  border-radius: 4px;
+  height: 10px;
+  background: rgba(135, 169, 107, 0.2);
+  border-radius: 6px;
   overflow: hidden;
+  position: relative;
+}
+
+.trait-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 
 .trait-fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--military-olive), var(--text-accent));
-  transition: width 0.5s ease;
-  border-radius: 4px;
+  background: linear-gradient(90deg, var(--military-sage), var(--text-accent));
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 6px;
+  position: relative;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
 }
 
 .profile-analysis {
-  margin-top: 24px;
-  padding: 16px;
-  background: var(--bg-primary);
-  border-radius: 6px;
-  border-left: 4px solid var(--military-olive);
+  margin-top: 32px;
+  padding: 24px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  border-left: 4px solid var(--military-sage);
+  border: 1px solid var(--glass-border);
 }
 
 .profile-analysis h4 {
   color: var(--text-accent);
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  font-weight: 700;
+  font-size: 16px;
 }
 
 .profile-analysis p {
   color: var(--text-secondary);
   font-size: 14px;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
-/* AI Scenarios Section */
+/* Enhanced AI Scenarios Section */
 .ai-scenarios {
-  padding: 100px 0;
-  background: var(--bg-primary);
+  padding: 120px 0;
+  background: var(--bg-secondary);
+  position: relative;
+}
+
+.ai-scenarios::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 80% 20%, rgba(74, 144, 226, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 20% 80%, rgba(255, 107, 53, 0.1) 0%, transparent 50%);
+  pointer-events: none;
 }
 
 .scenarios-content {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 40px;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 48px;
   align-items: start;
 }
 
 .tactical-map {
   position: relative;
   aspect-ratio: 16/10;
-  border-radius: 12px;
+  border-radius: 20px;
   overflow: hidden;
-  border: 2px solid var(--border-primary);
+  border: 2px solid var(--glass-border);
+  backdrop-filter: blur(4px);
+  box-shadow: var(--shadow-large);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tactical-map:hover {
+  transform: scale(1.02);
+  box-shadow: var(--shadow-large), 0 0 40px rgba(74, 144, 226, 0.2);
 }
 
 .map-background {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  filter: brightness(0.8) contrast(1.1) saturate(1.1);
 }
 
 .map-overlay {
@@ -238,10 +715,14 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(45deg, 
-    rgba(13, 27, 13, 0.7) 0%, 
-    transparent 50%, 
-    rgba(139, 0, 0, 0.3) 100%);
+  background: linear-gradient(
+    45deg, 
+    rgba(15, 31, 15, 0.8) 0%, 
+    transparent 30%,
+    transparent 70%,
+    rgba(196, 30, 58, 0.3) 100%
+  );
+  backdrop-filter: blur(1px);
 }
 
 .map-markers {
@@ -255,14 +736,15 @@ body {
 .map-marker {
   position: absolute;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 10;
 }
 
 .marker-icon {
-  width: 40px;
-  height: 40px;
-  background: var(--military-red);
-  border: 2px solid var(--military-amber);
+  width: 48px;
+  height: 48px;
+  background: radial-gradient(circle, var(--military-red), var(--military-bright-red));
+  border: 3px solid var(--military-amber);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -270,30 +752,413 @@ body {
   color: white;
   position: relative;
   z-index: 2;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 4px 20px rgba(196, 30, 58, 0.4);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .marker-pulse {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 40px;
-  height: 40px;
-  border: 2px solid var(--military-amber);
+  width: 48px;
+  height: 48px;
+  border: 3px solid var(--military-amber);
   border-radius: 50%;
   transform: translate(-50%, -50%);
-  animation: pulse 2s infinite;
-  opacity: 0.6;
+  animation: marker-pulse 2.5s infinite;
+  opacity: 0.7;
 }
 
 .map-marker.active .marker-icon {
-  transform: scale(1.2);
-  box-shadow: 0 0 20px var(--military-amber);
+  transform: scale(1.3);
+  box-shadow: 0 0 30px var(--military-amber), 0 4px 25px rgba(196, 30, 58, 0.6);
+  animation: marker-glow 1.5s ease-in-out;
 }
 
-@keyframes pulse {
-  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
-  50% { transform: translate(-50%, -50%) scale(1.5); opacity: 0.3; }
-  100% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
+@keyframes marker-pulse {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.7; }
+  50% { transform: translate(-50%, -50%) scale(1.8); opacity: 0.3; }
+  100% { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
+}
+
+@keyframes marker-glow {
+  0%, 100% { transform: scale(1.3); }
+  50% { transform: scale(1.5); }
+}
+
+.map-marker.moving {
+  animation: marker-move 1s ease-in-out;
+}
+
+/* Battle animations and scenario details continued */
+.battle-animations {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.drone-path {
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  width: 80%;
+  height: 3px;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  background: linear-gradient(90deg, transparent, var(--military-amber), transparent);
+  border-radius: 2px;
+}
+
+.drone-path.active {
+  opacity: 1;
+  animation: path-glow 3s ease-in-out;
+}
+
+@keyframes path-glow {
+  0%, 100% { box-shadow: none; }
+  50% { box-shadow: 0 0 15px var(--military-amber); }
+}
+
+.drone-icon {
+  position: absolute;
+  font-size: 24px;
+  animation: drone-flight 3s linear;
+  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
+}
+
+@keyframes drone-flight {
+  0% { left: 0%; transform: rotate(0deg); }
+  100% { left: 100%; transform: rotate(10deg); }
+}
+
+.artillery-strike {
+  position: absolute;
+  top: 60%;
+  left: 70%;
+  width: 40px;
+  height: 40px;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.artillery-strike.active {
+  opacity: 1;
+}
+
+.strike-effect {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, var(--military-orange), var(--military-red), transparent);
+  border-radius: 50%;
+  animation: artillery-blast 0.8s ease-out;
+}
+
+@keyframes artillery-blast {
+  0% { transform: scale(0); opacity: 1; }
+  50% { transform: scale(2); opacity: 0.8; }
+  100% { transform: scale(4); opacity: 0; }
+}
+
+/* Enhanced Scenario Details */
+.scenario-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 32px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-large);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.scenario-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--military-blue), var(--military-amber));
+  border-radius: 2px;
+}
+
+.scenario-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-large), 0 0 35px rgba(74, 144, 226, 0.2);
+}
+
+.scenario-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.scenario-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.scenario-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  backdrop-filter: blur(8px);
+  border: 1px solid;
+}
+
+.status-активна {
+  background: rgba(196, 30, 58, 0.15);
+  color: #ff6b6b;
+  border-color: rgba(196, 30, 58, 0.3);
+  box-shadow: 0 0 15px rgba(196, 30, 58, 0.2);
+}
+
+.status-планування {
+  background: rgba(255, 215, 0, 0.15);
+  color: var(--military-amber);
+  border-color: rgba(255, 215, 0, 0.3);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+}
+
+.status-виконується {
+  background: rgba(74, 144, 226, 0.15);
+  color: #60a5fa;
+  border-color: rgba(74, 144, 226, 0.3);
+  box-shadow: 0 0 15px rgba(74, 144, 226, 0.2);
+}
+
+.scenario-description {
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.scenario-units h4 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-accent);
+  font-weight: 700;
+  margin-bottom: 16px;
+  font-size: 16px;
+}
+
+.units-list {
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+.unit-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-secondary);
+  font-size: 14px;
+  padding: 8px 12px;
+  background: rgba(135, 169, 107, 0.1);
+  border-radius: 8px;
+  border-left: 3px solid var(--military-sage);
+  transition: all 0.3s ease;
+}
+
+.unit-item:hover {
+  background: rgba(135, 169, 107, 0.2);
+  transform: translateX(4px);
+}
+
+.unit-indicator {
+  width: 10px;
+  height: 10px;
+  background: var(--military-sage);
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 8px rgba(135, 169, 107, 0.5);
+}
+
+.scenario-actions {
+  margin-top: 28px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-tactical, .btn-tactical-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  border: none;
+}
+
+.btn-tactical {
+  background: linear-gradient(135deg, var(--military-red), var(--military-bright-red));
+  color: white;
+  box-shadow: 0 4px 15px rgba(196, 30, 58, 0.3);
+}
+
+.btn-tactical:hover {
+  background: linear-gradient(135deg, var(--military-bright-red), var(--military-red));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(196, 30, 58, 0.4);
+}
+
+.btn-tactical-secondary {
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  color: var(--text-accent);
+  border: 1px solid var(--border-glow);
+}
+
+.btn-tactical-secondary:hover {
+  background: var(--text-accent);
+  color: var(--military-dark-green);
+  transform: translateY(-2px);
+}
+
+.scenarios-navigation {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  align-items: center;
+}
+
+.nav-dot {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  background: rgba(135, 169, 107, 0.3);
+  border: 2px solid var(--border-secondary);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-dot:hover {
+  background: rgba(135, 169, 107, 0.5);
+  transform: scale(1.1);
+}
+
+.nav-dot.active {
+  background: var(--military-red);
+  border-color: var(--military-red);
+  transform: scale(1.2);
+  box-shadow: 0 0 15px rgba(196, 30, 58, 0.5);
+}
+
+.dot-pulse {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--military-red);
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.nav-dot.active .dot-pulse {
+  animation: nav-dot-pulse 2s infinite;
+}
+
+@keyframes nav-dot-pulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+/* Enhanced Responsive Design */
+@media (max-width: 1024px) {
+  .scenarios-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .gameplay-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .tactical-map {
+    aspect-ratio: 16/9;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+  
+  .hero-content {
+    padding: 32px 20px;
+  }
+  
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .hero-actions .btn-primary,
+  .hero-actions .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .hero-stats {
+    justify-content: space-between;
+    gap: 20px;
+  }
+  
+  .section-title {
+    font-size: 2.5rem;
+  }
+  
+  .tactical-map {
+    aspect-ratio: 4/3;
+  }
+  
+  .decisions-panel, .psychology-panel {
+    padding: 24px;
+  }
+  
+  .scenario-card {
+    padding: 24px;
+  }
+  
+  .donation-cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .donation-stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-content {
+    padding: 32px 24px;
+  }
 }
 
 .battle-animations {
