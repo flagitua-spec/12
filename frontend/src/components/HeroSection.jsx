@@ -38,6 +38,24 @@ const HeroSection = () => {
           <div className="explosion-effects">
             <div className={`explosion ${animationPhase === 3 ? 'active' : ''}`}></div>
           </div>
+          
+          {/* Floating text for drone-1 animation */}
+          <div className={`floating-text floating-text-1 ${animationPhase === 0 ? 'active' : ''}`}>
+            <span className="text-symbol">∞</span>
+            <span className="text-label">Унікальних сценаріїв</span>
+          </div>
+          
+          {/* Floating text for drone-2 animation */}
+          <div className={`floating-text floating-text-2 ${animationPhase === 1 ? 'active' : ''}`}>
+            <span className="text-symbol">🤖</span>
+            <span className="text-label">AI Генерація подій</span>
+          </div>
+          
+          {/* Floating text for drone-3 animation */}
+          <div className={`floating-text floating-text-3 ${animationPhase === 2 ? 'active' : ''}`}>
+            <span className="text-symbol">🎴</span>
+            <span className="text-label">Психологічний портрет гравця</span>
+          </div>
         </div>
       </div>
       
@@ -54,10 +72,9 @@ const HeroSection = () => {
         
         <p className="hero-description">
           Кожне рішення - це життя країни.
+          
           Стань Президентом країни, що воює. 
-          AI генерує унікальні сценарії на основі твоїх рішень.
-          Отримай свій психологічний портрет.
-          Задонать на актуальні збори.
+          
         </p>
         
         <div className="hero-actions">
@@ -65,25 +82,31 @@ const HeroSection = () => {
             <Play size={18} />
             Спробувати зараз
           </button>
-          <button className="btn-secondary">
-            Дізнатися більше
-          </button>
+
         </div>
         
-        <div className="hero-stats">
-          <div className="stat-item">
-            <div className="stat-number">∞</div>
-            <div className="stat-label">Унікальних сценаріїв</div>
-          </div>
-          <div className="stat-item">
-            <div className="stat-number">AI</div>
-            <div className="stat-label">Генерація подій</div>
-          </div>
-          <div className="stat-item">
-            <div className="stat-number">∞</div>
-            <div className="stat-label">Безкінечний сюжет</div>
+        {/* Mobile Game Features - показується тільки на екранах < 1050px */}
+        <div className="mobile-game-features">
+          <div className="features-list">
+            <div className="feature-item">
+              <span className="feature-icon">🤖</span>
+              <span className="feature-text">Перша гра з AI-генерацією військових сценаріїв</span>
+            </div>
+            <div className="feature-item">
+              <span className="feature-icon">🧠</span>
+              <span className="feature-text">Психологічний аналіз стилю лідерства</span>
+            </div>
+            <div className="feature-item">
+              <span className="feature-icon">🎯</span>
+              <span className="feature-text">Базується на реальних подіях та тактиках</span>
+            </div>
+            <div className="feature-item">
+              <span className="feature-icon">💝</span>
+              <span className="feature-text">Можливість задонатити на реальний збір</span>
+            </div>
           </div>
         </div>
+        
       </div>
     </section>
   );

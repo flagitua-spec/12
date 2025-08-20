@@ -1,24 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import { MapPin, Users, Activity, Eye } from 'lucide-react';
 
-const AIScenarios = ({ scenarios }) => {
+const AIScenarios = ({ scenarios = [] }) => {
   const [activeScenario, setActiveScenario] = useState(0);
   const [animationState, setAnimationState] = useState('idle');
 
   useEffect(() => {
+    if (!scenarios || scenarios.length === 0) return;
+    
     const interval = setInterval(() => {
       setActiveScenario(prev => (prev + 1) % scenarios.length);
       setAnimationState('moving');
       setTimeout(() => setAnimationState('idle'), 1000);
     }, 4000);
     return () => clearInterval(interval);
-  }, [scenarios.length]);
+  }, [scenarios]);
 
   const handleScenarioClick = (index) => {
+    if (!scenarios || index >= scenarios.length) return;
     setActiveScenario(index);
     setAnimationState('moving');
     setTimeout(() => setAnimationState('idle'), 1000);
   };
+
+  if (!scenarios || scenarios.length === 0) {
+    return null;
+  }
 
   return (
     <section className="ai-scenarios">

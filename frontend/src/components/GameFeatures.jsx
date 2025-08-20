@@ -109,25 +109,6 @@ const GameFeatures = ({ features }) => {
           ))}
         </div>
 
-        <div className="features-summary">
-          <div className="summary-card">
-            <h3>Чому "Верховний" унікальна?</h3>
-            <div className="summary-points">
-              <div className="summary-point">
-                <span className="point-number">1</span>
-                <span className="point-text">Перша гра з AI-генерацією військових сценаріїв</span>
-              </div>
-              <div className="summary-point">
-                <span className="point-number">2</span>
-                <span className="point-text">Психологічний аналіз стилю лідерства</span>
-              </div>
-              <div className="summary-point">
-                <span className="point-number">3</span>
-                <span className="point-text">Базується на реальних подіях та тактиках</span>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );

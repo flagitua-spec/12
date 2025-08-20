@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import HeroSection from './HeroSection';
 import GameplaySection from './GameplaySection';
 import AIScenarios from './AIScenarios';
-import GameFeatures from './GameFeatures';
+// import GameFeatures from './GameFeatures';
 import DonationSection from './DonationSection';
 import CTASection from './CTASection';
 import { mockGameData } from '../data/mockData';
@@ -50,9 +50,9 @@ const LandingPage = () => {
       </div>
       
       <HeroSection />
+      {/* <GameFeatures features={gameData.features} /> */}
       <GameplaySection decisions={gameData.sampleDecisions} />
       <AIScenarios scenarios={gameData.scenarios} />
-      <GameFeatures features={gameData.features} />
       <DonationSection />
       <CTASection testimonials={gameData.testimonials} />
     </div>
